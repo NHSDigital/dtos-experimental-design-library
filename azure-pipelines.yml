@@ -1,65 +1,58 @@
-trigger:
-  branches:
-    include:
-    - main
-    - master
-    - ia-site
-    - refs/tags/v*
-    - refs/heads/review/*
-    - refs/heads/dev/*
-    - refs/heads/user/*
-  paths:
-    exclude:
-    - CHANGELOG.md
-    - README.md
-
 pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'SonarCloud'
+    organization: 'nhsdigital'
+    scannerMode: 'CLI'
+    configMode: 'file'
+    extraProperties: |
+      sonar.javascript.lcov.reportPaths=coverage/lcov.info
+      sonar.language=js
+      sonar.projectKey=nhsuk-prototype-kit
+      sonar.sourceEncoding=UTF-8
 
-  - script: npm ci
-    displayName: 'Install'
+- task: Npm@1
+  displayName: 'npm install'
+  inputs:
+    verbose: true
+    
+- task: Npm@1
+  displayName: 'npm run build'
+  inputs:
+    command: 'custom'
+    customCommand: run build
+    verbose: true
 
-  - task: SonarCloudPrepare@1
-    displayName: 'Prepare analysis on SonarCloud'
-    inputs:
-      SonarCloud: 'SonarCloud'
-      organization: 'nhsdigital'
-      scannerMode: 'CLI'
-      extraProperties: |
-        sonar.projectKey=nhsuk-service-manual
-        sonar.exclusions=$(System.DefaultWorkingDirectory)/dependency-scan-results/**
-        sonar.javascript.lcov.reportPaths=coverage/lcov.info
-        sonar.coverage.exclusions=**/*.config.js,**/coverage/**
-        sonar.dependencyCheck.htmlReportPath=$(System.DefaultWorkingDirectory)/dependency-scan-results/dependency-check-report.html
-        sonar.language=js
+- task: Npm@1
+  displayName: 'npm run test'
+  inputs:
+    command: 'custom'
+    customCommand: run test
+    verbose: true
 
-  - script: npm run build
-    displayName: 'Build'
+- task: SonarCloudAnalyze@1
+  inputs:
+    jdkversion: 'JAVA_HOME_17_X64'
+  displayName: 'Run SonarCloud Code Analysis'
 
-  - script: npm run test
-    displayName: 'Test'
+- task: SonarCloudPublish@1
+  displayName: 'Publish Quality Gate Result'
 
-  - task: SonarCloudAnalyze@1
-    displayName: 'Run SonarCloud Code Analysis'
+- task: sonarcloud-buildbreaker@2
+  displayName: "Break the build if the quality gate fails"
+  inputs:
+    SonarCloud: 'SonarCloud'
+    organization: 'nhsdigital'
 
-  - task: SonarCloudPublish@1
-    displayName: 'Publish Quality Gate Result'
-    inputs:
-      pollingTimeoutSec: '300'
+- task: ArchiveFiles@2
+  displayName: 'Archive files'
+  inputs:
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
 
-  - task: sonarcloud-buildbreaker@2
-    displayName: "Break the build if the quality gate fails"
-    inputs:
-      SonarCloud: 'SonarCloud'
-      organization: 'nhsdigital'
+    includeRootFolder: false
 
-  - task: ArchiveFiles@2
-    inputs:
-      rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
-      includeRootFolder: false
-    displayName: 'Create file archive to publish'
-
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish files to Azure Pipelines'
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish artifacts: drop'
