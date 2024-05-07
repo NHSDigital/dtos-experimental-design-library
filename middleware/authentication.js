@@ -1,5 +1,3 @@
-const basicAuth = require('basic-auth');
-
 /**
  * Simple basic auth middleware for use with Express 4.x.
  *
@@ -13,19 +11,17 @@ const basicAuth = require('basic-auth');
  * @param   {string}   res Express Response object
  * @returns {function} Express 4 middleware requiring the given credentials
  */
+// External dependencies
+const basicAuth = require('basic-auth');
 
-module.exports = (req, res, next) => {
-  // External dependencies
-
+module.exports = function (req, res, next) { /* eslint-disable-line consistent-return */
   // Set configuration variables
   const env = (process.env.NODE_ENV || 'development').toLowerCase();
-  const username = process.env.MANUAL_USERNAME;
-  const password = process.env.MANUAL_PASSWORD;
+  const username = process.env.PROTOTYPE_USERNAME;
+  const password = process.env.PROTOTYPE_PASSWORD;
 
-  if (env === 'staging') {
+  if (env === 'production' || env === 'staging') {
     if (!username || !password) {
-      // eslint-disable-next-line no-console
-      console.error('Username or password is not set in environment variables.');
       return res.send('<p>Username or password not set in environment variables.</p>');
     }
 
@@ -36,5 +32,5 @@ module.exports = (req, res, next) => {
       return res.sendStatus(401);
     }
   }
-  return next();
+  next();
 };

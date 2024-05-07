@@ -1,15 +1,19 @@
+// Use this file to change prototype configuration.
+
 module.exports = {
-  // Adobe analytics
-  adobeTrackingUrl:
-    process.env.ADOBE_TRACKING_URL
-    || '//assets.adobedtm.com/f8560165ec6a/5d91bd521a81/launch-c545cb3a904a-development.min.js',
+  // Service name
+  serviceName: 'NHS.UK prototype kit',
 
-  // Base URL
-  baseURL: process.env.BASE_URL || 'https://service-manual.nhs.uk',
+  // Port to run nodemon on locally
+  port: 2000,
 
-  // Environment
-  env: process.env.NODE_ENV || 'production',
+  // Automatically stores form data, and send to all views
+  useAutoStoreData: 'true',
 
-  // Port to run local development server on
-  port: process.env.PORT || 3000,
+  // Enable cookie-based session store (persists on restart)
+  // Please note 4KB cookie limit per domain, cookies too large will silently be ignored
+  useCookieSessionStore: 'false',
+
+  // Enable or disable built-in docs and examples.
+  useDocumentation: true,
 };

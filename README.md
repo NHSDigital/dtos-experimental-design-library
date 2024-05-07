@@ -1,85 +1,80 @@
-# NHS digital service manual
+# NHS.UK prototype kit
 
-Guidance for designing and building digital services for the NHS. Things you need to make consistent, usable services that put people first.
+Visit the <a href="http://nhsuk-prototype-kit.azurewebsites.net/docs">NHS.UK prototype kit site</a> to download the latest version and read the documentation.
 
-## Running the application locally
+## About the NHS.UK prototype kit
 
-### Prerequisite
+The NHS.UK prototype kit enables you to make interactive prototypes that will look like pages on NHS.UK. The prototypes you make are a great way to show ideas to others and for conducting user research.
 
-Install the long-term support (LTS) version of <a href="https://nodejs.org/en/">Node.js</a>, which includes npm.
+## Security
 
-### Cloning and running the application
+If you publish your prototypes online, they must be protected by a <a href="https://nhsuk-prototype-kit.azurewebsites.net/docs/how-tos/publish-your-prototype-online">username and password</a>. This is to prevent members of the public finding prototypes and thinking they are real services.
 
-Clone the repo: `git clone https://github.com/nhsuk/nhsuk-service-manual.git nhsuk-service-manual` and while in the project directory `cd nhsuk-service-manual`, install the required npm packages with: `npm install`.
+You must protect user privacy at all times, even when using prototypes. Prototypes made with the kit look like NHS.UK, but do not have the same security provisions. Always make sure you are handling user data appropriately.
 
-Run the project in development mode `npm run watch` and visit <a href="http://localhost:3000">http://localhost:3000</a>.
+## Installation instructions
 
-Run automated tests locally with `npm run test`.
+- <a href="http://nhsuk-prototype-kit.azurewebsites.net/docs/install/simple">Install guide (non technical)</a>
+- <a href="http://nhsuk-prototype-kit.azurewebsites.net/docs/install/advanced">Developer friendly install guide (technical)</a>
 
-## Running the application via the browser with Gitpod
+### Running the kit
+
+Start the kit with `npm run watch`.
+
+## Contribute
+
+If you want to contribute to the NHS.UK prototype kit, by reporting bugs, fixing bugs, suggesting new features or writing documentation, then read our [contributing guidelines](CONTRIBUTING.md).
+
+## Development environment
 
 Before running Gitpod, you must <a href="https://github.com/apps/gitpod-io/installations/new">install the Gitpod.io application on your GitHub account</a>.
 
 Gitpod also requires access to public repositories. Enable this via <a href="https://gitpod.io/integrations">Gitpod integrations</a>. (Click on the 3 dots to edit permissions for your GitHub account. Gitpod may pre-select permissions. You need read/write access to code in the repos.)
 
-Using your own Github credentials you can create, change, commit and push to branches on our Gitpod container via the "ready to code" button below.
+Using your own GitHub credentials you can create, change, commit and push to branches on our Gitpod container via the "ready to code" button below.
 
-[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/nhsuk/nhsuk-service-manual)
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/nhsuk/nhsuk-prototype-kit)
 
 Read an <a href="https://www.gitpod.io/docs">introduction to Gitpod (on Gitpod's website)</a>.
 
 ## Release lifecycle
 
+> The below is only for maintainers of the prototype kit source code - these instructions aren't relevant if you're building your own prototype using the kit.
+
+### Testing
+
+Run unit tests locally with `npm run test`.
+
 ### Environments
 
-#### Review
+#### Preview environment
 
-Code pushed to a branch starting with `review/1-` will deploy on the [review/1 environment](https://nhsuk-service-manual-review-wa-1-dev-uks.azurewebsites.net/).
-
-Code pushed to a branch starting with `review/2-` will deploy on the [review/2 environment](https://nhsuk-service-manual-review-wa-2-dev-uks.azurewebsites.net/).
-
-Code pushed to a branch starting with `review/3-` will deploy on the [review/3 environment](https://nhsuk-service-manual-review-wa-3-dev-uks.azurewebsites.net/).
-
-#### Development
-
-Code pushed to a branch starting with `dev/` will deploy on the [development environment](https://nhsuk-service-manual-wa-dev-uks.azurewebsites.net/).
-
-#### User Testing
-
-Code pushed to a branch starting with `user/` will deploy on the [user testing environment](https://nhsuk-service-manual-usertesting-wa-dev-uks.azurewebsites.net/).
-
-#### Staging
-
-Used for very final checks before changes are pushed to the live website.
-
-Code pushed to the `main` branch will deploy to the [Staging environment](https://nhsuk-service-manual-dev-uks.azurewebsites.net/).
+Code pushed to the `main` branch will deploy on the [Preview environment](http://nhsuk-prototype-kit-preview.azurewebsites.net/).
 
 #### Live
 
-The live NHS digital service manual website, accessible to the public.
+The live NHS.UK prototype kit [Live environment](https://nhsuk-prototype-kit.azurewebsites.net), accessible to the public.
 
-Git tags created using SEMVER format `v0.0.0` will deploy to the [Live environment](https://service-manual.nhs.uk/). (Note: Live is behind a server side cache which results in changes not appearing immediately.)
+__Note:__ Live is behind a server side cache which results in changes not appearing immediately.
 
-### Release to live
+### Versioning and deploying to live
 
-1. Visit the [GitHub releases page](https://github.com/nhsuk/nhsuk-service-manual/releases) and [draft a new release](https://github.com/nhsuk/nhsuk-service-manual/releases/new).
-2. Enter the tag version, using the same version as in the [CHANGELOG](https://github.com/nhsuk/nhsuk-service-manual/blob/main/CHANGELOG.md) and [package.json](https://github.com/nhsuk/nhsuk-service-manual/blob/main/package.json#L3) files, prefixed with a `v`. For example `v13.15.1`.
-3. The `main` branch should be preselected. Leave it as it is.
-4. Enter the same tag version in the release title box. For example, `v13.15.1`.
-5. Enter the [CHANGELOG](https://github.com/nhsuk/nhsuk-service-manual/blob/main/CHANGELOG.md) entry for this version's release in the release description box. You can find examples of other release descriptions on the [GitHub releases page](https://github.com/nhsuk/nhsuk-service-manual/releases).
-6. Leave "This is a pre-release" unticked.
-7. Leave "Create a discussion for this release" unticked.
-8. Then click the Publish release button.
-9. After a couple of minutes the Azure Pipeline will complete and the release will start.
+- Merge required changes via PR into `main` branch
+  - Ensure the version number in `package.json` and `CHANGELOG.md` match, with a summary of the changes included in the changelog
+- Verify the changes in the [Preview environment](http://nhsuk-prototype-kit-preview.azurewebsites.net/)
+- Pull down merged `main` branch to your local repository
+- Create a tag with the version number from the latest commit on `main`
+  - If the latest version you're looking to push is version "1.2.3", you can do this on the command line with
+    - `git tag v1.2.3`
+    - `git push --tags`
+- [Github actions](https://github.com/nhsuk/nhsuk-prototype-kit/actions/workflows/release.yml) will spring to life and create a release which will be visible on the [releases tab](https://github.com/nhsuk/nhsuk-prototype-kit/releases) of the repository.
+- Finally, edit the description of the release to match the content entered into the changelog.
+- To deploy the changes to Live, the promotion to Live from the Preview environment must have the appropriate approval in Azure.
 
 ### Code Analysis
 
-Code analysis results can be found in [SonarQube](https://sonar.nhswebsite.nhs.uk/dashboard?id=service-manual).
+Code analysis results can be found in [SonarQube](https://sonar.nhswebsite.nhs.uk/dashboard?id=nhsuk-prototype-kit).
 
-## Get in touch
+## Support
 
-The NHS digital service manual is maintained by NHS Digital. [Email the service manual team](mailto:service-manual@nhs.net), open a [GitHub issue](https://github.com/nhsuk/nhsuk-service-manual/issues/new) or get in touch on the [NHS digital service manual Slack workspace](https://service-manual.nhs.uk/slack).
-
-## Licence
-
-The codebase is released under the MIT Licence, unless stated otherwise. This covers both the codebase and any sample code in the documentation. The documentation is © Crown copyright and available under the terms of the Open Government 3.0 licence.
+The NHS.UK prototype kit is maintained by NHS England. [Email us](mailto:service-manual@nhs.net), open a [Github issue](https://github.com/nhsuk/nhsuk-prototype-kit/issues/new) or get in touch on the [NHS digital service manual Slack workspace](https://join.slack.com/t/nhs-service-manual/shared_invite/enQtNTIyOTEyNjU3NDkyLTk4NDQ3YzkwYzk1Njk5YjAxYTI5YTVkZmUxMGQ0ZjA3NjMyM2ZkNjBlMWMxODVjZjYzNzg1ZmU4MWY1NmE2YzE).
