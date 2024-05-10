@@ -1,0 +1,280 @@
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - edit the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+PATTERN NAME HERE
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+
+{{ breadcrumb({
+href: "/",
+text: "Home"
+}) }}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <!-- PAGE HEADING -->
+
+    <h1>
+      <span class="nhsuk-caption-l">
+        Pattern
+        <span class="nhsuk-u-visually-hidden"> - </span>
+      </span>
+      Pattern name
+    </h1>
+
+    <!--- TAGS -->
+
+    <p class="tag-display">
+
+      <!-- UNCOMMENT AS APPROPRIATE -->
+
+      <!--<strong class="nhsuk-tag">Staff facing</strong>-->
+      <!--<strong class="nhsuk-tag nhsuk-tag--white">Public facing</strong>-->
+      <!--<strong class="nhsuk-tag nhsuk-tag--yellow">Experimental</strong>-->
+      <!--<strong class="nhsuk-tag nhsuk-tag--green">Tested</strong>-->
+    </p>
+
+    <!--- INTRODUCTION -->
+
+    <p class="nhsuk-lede-text">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis dolorum minus facilis consequatur voluptatem cumque.
+    </p>
+
+  </div>
+  <div class="nhsuk-grid-column-full">
+
+    <!--- PRIMARY EXAMPLE -->
+
+    <h2>Example and code</h2>
+    <div class="design-example">
+
+      <a href="default/" class="design-example__pop-out" target="_blank" rel="noopener noreferrer">
+        Open this<span class="nhsuk-u-visually-hidden"> example pattern</span> example in new window
+      </a>
+
+      <div class="code-embed">
+
+        <iframe title="default" src="default/" class="design-example-frame" id="iFrameResizer0"
+          style="overflow: hidden;" scrolling="no"></iframe>
+
+      </div>
+
+      <div class="code-snippet">
+        <ul class="app-tabs" role="tablist">
+
+          <li class="app-tabs__item" role="presentation" data-index="ex-1">
+            <a href="javascript:void(0);" role="tab" aria-controls="default-example" data-track="tab-html"
+              aria-selected="true">
+              HTML<span class="nhsuk-u-visually-hidden"> code for default buttons</span>
+            </a>
+          </li>
+
+          <li class="app-tabs__item" role="presentation" data-index="ex-2">
+            <a href="javascript:void(0);" role="tab" aria-controls="default-example" data-track="tab-html"
+              aria-selected="true">
+              CSS<span class="nhsuk-u-visually-hidden"> code for default buttons</span>
+            </a>
+          </li>
+
+        </ul>
+        <div id="default-example" class="app-tabs__container js-tabs__container" role="tabpanel">
+
+          <div class="app-tabs__item app-tabs__item--mobile" role="presentation" data-index="ex-1">
+            <a href="" role="tab" aria-controls="default-example" data-track="tab-html" aria-selected="true">
+              HTML<span class="nhsuk-u-visually-hidden"> code for default buttons</span>
+            </a>
+          </div>
+
+          <div class="code-snippet__preformatted js-hidden" data-index="ex-1">
+
+            <div class="app-code-snippet__macro"></div>
+            <div class="app-code-snippet__container">
+              <a class="app-link--copy" href="javascript:void(0);" aria-live="assertive">
+                Copy<span class="nhsuk-u-visually-hidden"> example pattern</span>
+                code</a>
+              <pre><code id="primary-html-example" class="xml html-example">
+                  <!-- -- -- -- -- INSERT HTML CODE HERE -- -- -- -- -->
+              </code></pre>
+            </div>
+
+            <a class="app-link--close" href="javascript:void(0);" aria-live="assertive">
+              Close<span class="nhsuk-u-visually-hidden"> default example HTML code</span>
+            </a>
+          </div>
+
+          <div class="app-tabs__item app-tabs__item--mobile" role="presentation" data-index="ex-2">
+            <a href="" role="tab" aria-controls="default-example" data-track="tab-html" aria-selected="true">
+              CSS<span class="nhsuk-u-visually-hidden"> code for default example</span>
+            </a>
+          </div>
+
+          <div class="code-snippet__preformatted js-hidden" data-index="ex-2">
+
+            <div class="app-code-snippet__macro"></div>
+            <div class="app-code-snippet__container">
+              <a class="app-link--copy" href="javascript:void(0);" aria-live="assertive">
+                Copy<span class="nhsuk-u-visually-hidden"> example pattern</span>
+                code</a>
+              <pre><code id="primary-css-example" class="scss css-example">
+                  <!-- -- -- -- -- INSERT CSS CODE HERE -- -- -- -- -->
+                </code></pre>
+            </div>
+
+            <a class="app-link--close" href="javascript:void(0);" aria-live="assertive">
+              Close<span class="nhsuk-u-visually-hidden"> default example CSS code</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <!--- VARIATIONS -->
+
+    <!-- DELETE THIS SECTION IF NOT REQUIRED -->
+
+    <h2>Variations</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium necessitatibus nulla adipisci dolorem eveniet culpa voluptatum odio nesciunt iure nobis quos, corporis natus consequuntur totam pariatur. Accusamus, vel delectus. Quaerat.</p>
+  </div>
+  <div class="nhsuk-grid-column-full">
+
+    <div class="design-example">
+
+      <a href="variant/" class="design-example__pop-out" target="_blank" rel="noopener noreferrer">
+        Open this<span class="nhsuk-u-visually-hidden"> example pattern</span> example in new window
+      </a>
+
+      <div class="code-embed">
+
+        <iframe title="variant" src="variant/" class="design-example-frame" id="iFrameResizer0"
+          style="overflow: hidden;" scrolling="no"></iframe>
+
+      </div>
+
+      <div class="code-snippet">
+        <ul class="app-tabs" role="tablist">
+
+          <li class="app-tabs__item" role="presentation" data-index="ex-1">
+            <a href="javascript:void(0);" role="tab" aria-controls="default-example" data-track="tab-html"
+              aria-selected="true">
+              HTML<span class="nhsuk-u-visually-hidden"> code for variant example components</span>
+            </a>
+          </li>
+
+          <li class="app-tabs__item" role="presentation" data-index="ex-2">
+            <a href="javascript:void(0);" role="tab" aria-controls="default-example" data-track="tab-html"
+              aria-selected="true">
+              CSS<span class="nhsuk-u-visually-hidden"> code for variant example pattern</span>
+            </a>
+          </li>
+
+        </ul>
+        <div id="variation-example" class="app-tabs__container js-tabs__container" role="tabpanel">
+
+          <div class="app-tabs__item app-tabs__item--mobile" role="presentation" data-index="ex-1">
+            <a href="" role="tab" aria-controls="default-example" data-track="tab-html" aria-selected="true">
+              HTML<span class="nhsuk-u-visually-hidden"> code for variant example pattern</span>
+            </a>
+          </div>
+
+          <div class="code-snippet__preformatted js-hidden" data-index="ex-1">
+
+            <div class="app-code-snippet__macro"></div>
+            <div class="app-code-snippet__container">
+              <a class="app-link--copy" href="javascript:void(0);" aria-live="assertive">
+                Copy<span class="nhsuk-u-visually-hidden"> example pattern</span>
+                code</a>
+              <pre><code id="variation-html-example" class="xml html-example">
+                  <!-- -- -- -- -- INSERT HTML CODE HERE -- -- -- -- -->
+              </code></pre>
+            </div>
+
+            <a class="app-link--close" href="javascript:void(0);" aria-live="assertive">
+              Close<span class="nhsuk-u-visually-hidden"> default example pattern code</span>
+            </a>
+          </div>
+
+          <div class="app-tabs__item app-tabs__item--mobile" role="presentation" data-index="ex-2">
+            <a href="" role="tab" aria-controls="default-example" data-track="tab-html" aria-selected="true">
+              CSS<span class="nhsuk-u-visually-hidden"> code for variant example pattern</span>
+            </a>
+          </div>
+
+          <div class="code-snippet__preformatted js-hidden" data-index="ex-2">
+
+            <div class="app-code-snippet__macro"></div>
+            <div class="app-code-snippet__container">
+              <a class="app-link--copy" href="javascript:void(0);" aria-live="assertive">
+                Copy<span class="nhsuk-u-visually-hidden"> example pattern</span>
+                code</a>
+              <pre><code id="variation-css-example" class="scss css-example">
+                  <!-- -- -- -- -- INSERT CSS CODE HERE -- -- -- -- -->           
+              </code></pre>
+            </div>
+
+            <a class="app-link--close" href="javascript:void(0);" aria-live="assertive">
+              Close<span class="nhsuk-u-visually-hidden"> variant example pattern code</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <!--- RATIONALE -->
+
+    <h2>Rationale</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, voluptate eveniet. Provident autem quidem nam consectetur, nobis ab aspernatur? Debitis ipsam itaque, iusto fuga nobis veniam ratione! Voluptatibus, praesentium voluptatem.</p>
+
+    <!--- RESEARCH -->
+
+    <h2>Research</h2>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis, maxime! Nulla amet dolorum consectetur deserunt porro optio consequatur, natus dolore non officia ut laboriosam velit vel hic laborum voluptatibus aspernatur.</p>
+
+    <!--- UPDATES -->
+
+    <h2>Updates</h2>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe voluptas, nihil corrupti voluptatibus, cum, ad ut ea ex quod molestias quisquam nesciunt? Alias dolor officiis fugit minima rerum. Laudantium, nemo.</p>
+
+    <!--- CONTACTS -->
+
+    <h2>Contacts</h2>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur possimus quis expedita sit adipisci impedit eaque odio tempora eius nulla dolores distinctio recusandae autem nam quasi, officia et. Nisi, quibusdam.</p>
+
+  </div>
+
+</div>
+{% endblock %}
+{% block pageScripts %}
+
+{% endblock %}
