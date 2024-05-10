@@ -4,8 +4,12 @@
 // Components that are not in the NHS.UK frontend library
 @import 'components/list-border';
 @import 'components/related-nav';
+@import 'components/nav';
+@import 'components/govuk/main';
+@import 'components/design-example/design-example';
+
 
 ///////////////////////////////////////////
 // Add your custom CSS/Sass styles below...
 ///////////////////////////////////////////
-  
+@import 'components/custom/example-component';

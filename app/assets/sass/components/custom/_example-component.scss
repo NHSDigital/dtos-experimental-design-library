@@ -1,0 +1,12 @@
+.nhsuk-example-component {
+    border: 8px solid $color_nhsuk-pink;
+    padding: 24px;
+    > :last-child {
+        margin-bottom: 0;
+    }
+}
+
+.nhsuk-example-component__variation {
+    border: 8px solid $color_nhsuk-green;
+}
+
