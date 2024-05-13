@@ -1,0 +1,58 @@
+{% set pageTitle = "Template" %}
+{% set pageSection = "Design library" %}
+{% set subSection = "Components" %}
+{% set pageDescription = "This is a template page. You should add a page description here." %}
+{% set dateUpdated = "May 2024" %}
+{% set disableSearch = true %}
+
+
+{% extends "includes/app-layout.njk" %}
+
+{% block breadcrumb %}
+  {% include "design-library/components/_breadcrumb.njk" %}
+{% endblock %}
+
+{% block bodyContent %}
+
+  <!--- EXAMPLES AND CODE -->
+
+  <h2>Example and code</h2>
+
+  {{ designExample({
+    group: "components",
+    item: "template",
+    type: "default"
+  }) }}
+
+  <!--- VARIATIONS -->
+
+  <h2>Variations</h2>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, in! Facere sed autem optio cum dignissimos iure unde officiis deserunt debitis doloremque eius excepturi reprehenderit quaerat, minima, nisi voluptatibus tempora. </p>
+
+  {{ designExample({
+    group: "components",
+    item: "template",
+    type: "variant"
+  }) }}
+
+  <!--- RATIONALE -->
+
+  <h2>Rationale</h2>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores vel possimus eligendi laudantium expedita repellendus laboriosam recusandae? In, magnam omnis culpa vel accusantium quis consequatur, veniam dolor nihil provident cumque.</p>
+
+  <!--- RESEARCH -->
+
+  <h2>Research</h2>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur deserunt neque vitae commodi numquam quas inventore corrupti totam rerum vel ut minus, explicabo consectetur dolore! A ullam dignissimos quisquam provident.</p>
+
+  <!--- UPDATES -->
+
+  <h2>Updates</h2>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam quidem rerum aspernatur maxime et accusamus architecto facilis nihil temporibus quibusdam minus sit consequatur laborum, fugiat dolore quasi. Quae, ipsam ab.</p>
+
+  <!--- CONTACTS -->
+
+  <h2>Contacts</h2>
+  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione, qui officia iste maiores fugiat quaerat. Atque obcaecati incidunt, exercitationem at quos error hic molestiae qui quas voluptatum! Similique, vel nobis.</p>
+
+    {% endblock %}
