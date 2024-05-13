@@ -1,0 +1,35 @@
+{% set pageTitle = "Site map" %}
+{% set pageDescription = "A list of pages on this website - with links" %}
+{% set hideDescription = true %}
+{% set dateUpdated = "May 2024" %}
+
+{% extends "includes/app-layout-two-thirds.njk" %}
+
+{% block bodyContent %}
+
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="about/">About</a></li>
+    <li>
+      <a href="/design-library">Design system</a>
+      <ul class="nhsuk-u-nested-list">
+        <li><a href="/design-system/styles">Styles</a>
+          <ul class="nhsuk-u-nested-list">
+            
+          </ul>
+        </li>
+        <li><a href="/design-system/components">Components</a>
+          <ul class="nhsuk-u-nested-list">
+            <li><a href="/design-library/components/example">Action link</a></li>
+          </ul>
+        </li>
+        <li><a href="/design-system/patterns">Patterns</a>
+          <ul class="nhsuk-u-nested-list">
+            
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+{% endblock %}
