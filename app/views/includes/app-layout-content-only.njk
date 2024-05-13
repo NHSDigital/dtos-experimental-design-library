@@ -1,0 +1,15 @@
+{% extends "includes/layout.njk" %}
+
+{% block body %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds app-component-reading-width">
+
+    {% block bodyContent %}{% endblock %}
+
+    {%- if dateUpdated %}
+      <p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-0">Updated: {{dateUpdated}}</p>
+    </div>
+    {% endif %}
+
+  </div>
+{% endblock %}

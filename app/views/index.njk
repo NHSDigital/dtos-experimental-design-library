@@ -1,0 +1,79 @@
+{% set pageDescription = "Design and build digital services for the NHS. Things you need to make consistent, usable
+services that put people first." %}
+{% set pageLayout = "Homepage" %}
+{% set disableSearch = true %}
+
+{% extends "includes/layout.njk" %}
+
+{% block breadcrumb %}{% endblock %}
+
+{% block outerBody %}
+
+<main id="maincontent" role="main">
+
+  <section class="nhsuk-hero">
+    <div class="nhsuk-width-container nhsuk-hero--border app-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+          <div class="nhsuk-hero__wrapper app-hero__wrapper">
+            <h1 class="nhsuk-u-margin-bottom-4">Screening design library</h1>
+            <p class="nhsuk-body-l nhsuk-u-margin-bottom-1">A repository for the various styles, components and patterns
+              used across our various products and services within screening.</p>
+          </div>
+        </div>
+        <div class="nhsuk-grid-column-one-third app-latest-update">
+          <div class="nhsuk-card app-card--transparent nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-0">
+            <div class="nhsuk-card__content">
+              <h2 class="nhsuk-card__heading nhsuk-heading-m"><a href="#">What's new</a></h2>
+              <p class="nhsuk-card__description">We have set up a first draft of the design library and added an <a
+                  href="#">example component</a>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="nhsuk-section">
+    <div class="nhsuk-width-container app-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+          <h2>About this design library</h2>
+          <p>
+            This repository will be used to enable collaboration between teams working on Screening products and
+            services, as well as allowing us to share our work to the wider NHS community.
+          </p>
+
+          <p>It is <strong>not intended to replace</strong> the <a
+              href="https://service-manual.nhs.uk/design-system">NHS Digital service manual design system</a>.</p>
+
+          <p>
+            You can <a href="/about">read more</a> about why we initiated this
+            repository, and what our aims for it are.
+          </p>
+
+          <hr class="nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-6">
+
+          <h2>
+            The design library
+          </h2>
+    
+          <p>Where possible, we will look to utilise existing design system styles, components and patterns to build our services.</p>
+    
+          <p class="nhsuk-u-margin-bottom-5">Where this is not possible, we will take a user centred approach to developing new content and showcase it in this repository, which will be actively maintained and updated.</p>
+    
+          <div class="nhsuk-action-link">
+            <a class="nhsuk-action-link__link" href="design-library/">
+              <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" width="36" height="36">
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+              </svg>
+              <span class="nhsuk-action-link__text">View the designs</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

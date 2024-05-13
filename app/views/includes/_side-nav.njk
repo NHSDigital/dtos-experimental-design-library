@@ -1,0 +1,76 @@
+{% set dsDesign = [
+  { title: "Styles", url: "/design-library/styles" },
+  { title: "Components", url: "/design-library/components" },
+  { title: "Patterns", url: "/design-library/patterns" }
+] %}
+
+{% set components = [
+  { title: "Example", url: "/design-library/components/example" }
+] %}
+
+
+<nav class="app-side-nav">
+
+  {%- if pageSection == "Design library" and subSection != "Styles" and subSection != "Components" and subSection != "Patterns" %}
+
+    <h2 class="app-side-nav__heading">Design</h2>
+    <ul class="nhsuk-list app-side-nav__list">
+      {% for item in dsDesign %}
+        <li class="app-side-nav__item{% if item.title == pageTitle %} app-side-nav__item--current{% endif %}">
+          <a class="app-side-nav__link" href="{{ item.url }}">{{ item.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {%- if subSection == "Styles" %}
+    {{ backLink({
+      "href": "/design-library",
+      "text": "Design library",
+      "classes": "app-u-hide-mobile app-side-nav__back nhsuk-u-margin-bottom-4"
+    }) }}
+    <h2 class="app-side-nav__heading">Styles <span class="nhsuk-u-visually-hidden">navigation</span></h2>
+    <ul class="nhsuk-list app-side-nav__list">
+      {% for item in styles %}
+        <li class="app-side-nav__item{% if item.title == pageTitle %} app-side-nav__item--current{% endif %}">
+          <a class="app-side-nav__link" href="{{ item.url }}">{{ item.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {%- if subSection == "Components" %}
+    {{ backLink({
+      "href": "/design-library",
+      "text": "Design library",
+      "classes": "app-u-hide-mobile app-side-nav__back nhsuk-u-margin-bottom-4"
+    }) }}
+    <h2 class="app-side-nav__heading">Components <span class="nhsuk-u-visually-hidden">navigation</span></h2>
+    <ul class="nhsuk-list app-side-nav__list">
+      {% for item in components %}
+        <li class="app-side-nav__item{% if item.title == pageTitle %} app-side-nav__item--current{% endif %}">
+          <a class="app-side-nav__link" href="{{ item.url }}">{{ item.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {%- if subSection == "Patterns" %}
+    {{ backLink({
+      "href": "/design-library",
+      "text": "Design library",
+      "classes": "app-u-hide-mobile app-side-nav__back nhsuk-u-margin-bottom-4"
+    }) }}
+    <h2 class="app-side-nav__heading">Patterns <span class="nhsuk-u-visually-hidden">navigation</span></h2>
+    <ul class="nhsuk-list app-side-nav__list">
+      {% for item in patterns %}
+        <li class="app-side-nav__item{% if item.title == pageTitle %} app-side-nav__item--current{% endif %}">
+          <a class="app-side-nav__link" href="{{ item.url }}">{{ item.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+
+
+</nav>

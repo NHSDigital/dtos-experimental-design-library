@@ -1,0 +1,107 @@
+{% macro designExample(params) %}
+  {% set examplePath = "app/views/design-library/" + params.group + "/" + params.item + "/" + params.type + "/index.njk" %}
+  {% set exampleCssPath = "app/views/design-library/" + params.group + "/" + params.item + "/" + params.type + "/styles.scss" %}
+  {% set standaloneURL = "/design-example/" + params.group + "/" + params.item + "/" + params.type + "?fullpage=" + params.fullpage + "&blankpage=" + params.blankpage %}
+
+  {# `showExample` and `showCode` is true, unless explicitly turned off with params #}
+  {% set showExample = params.showExample !== false %}
+  {% set showCode = params.showCode !== false %}
+  {% set showArguments = params.showArguments !== false %}
+
+  {% set html %}
+  {{- getHTMLCode(examplePath) | highlight('html') | safe -}}
+  {% endset %}
+
+  {% set css %}
+  {{- getHTMLCode(exampleCssPath) | highlight('scss') | safe -}}
+  {% endset %}
+
+  {#
+  Set up the `snippets` array to be a definition of the types of snippet to
+  display. If `params.htmlOnly` is true, the only snippet type to show is HTML.
+  Otherwise we show HTML and nunjucks.
+
+  Code definitions should be an object with a `name` and the raw `code` to
+  render onto the page with the `|safe` filter.
+  #}
+  {% set htmlDefinition = {
+    name: 'HTML',
+    code: html
+  } %}
+  {% set cssDefinition = {
+    name: 'CSS',
+    code: css
+  } %}
+  {% if params.htmlOnly %}
+    {% set snippets = [htmlDefinition] %}
+  {% elif params.cssOnly %}
+    {% set snippets = [cssDefinition] %}
+  {% else %}
+    {% set snippets = [htmlDefinition, cssDefinition] %}
+  {% endif %}
+
+  {% set exampleType = params.type|lower|replace("-", " ") %}
+  {% set exampleItem = params.item|lower|replace("-", " ") %}
+  {% set exampleId = params.type + "-example" %}
+  {% set exampleTitle = exampleType + " " + exampleItem %}
+
+  <div class="design-example">
+
+    {% if showExample %}
+      <a href="{{ standaloneURL }}" class="design-example__pop-out" target="_blank" rel="noopener noreferrer">
+        Open this<span class="nhsuk-u-visually-hidden">
+          {{ exampleTitle }}</span> example in a new tab
+      </a>
+      <div class="code-embed">
+        <iframe title="{{ params.type }}" src="{{ standaloneURL }}" class="design-example-frame"></iframe>
+      </div>
+    {% endif %}
+
+    {% if showCode %}
+      <div class="code-snippet">
+        {% if snippets | length > 1 %}
+          <ul class="app-tabs" role="tablist">
+            {% for snippet in snippets %}
+              <li class="app-tabs__item" role="presentation" data-index="ex-{{ loop.index }}">
+                <a href="javascript:void(0);" role="tab" aria-controls="{{ exampleId }}" data-track="tab-html" aria-selected="true">
+                  {{ snippet.name }}
+                  <span class="nhsuk-u-visually-hidden"> code for {{ exampleTitle }}</span>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        <div class="app-tabs__container js-tabs__container" id="{{ exampleId }}" role="tabpanel">
+          {% for snippet in snippets %}
+            {% if snippets | length > 1 %}
+              <div class="app-tabs__item app-tabs__item--mobile" role="presentation" data-index="ex-{{ loop.index }}">
+                <a href="" role="tab" aria-controls="{{ exampleId }}" data-track="tab-html" aria-selected="true">
+                  {{ snippet.name }}
+                  <span class="nhsuk-u-visually-hidden"> code for {{ exampleTitle }}</span>
+                </a>
+              </div>
+            {% endif %}
+            <div class="code-snippet__preformatted {% if snippets|length > 1 %}js-hidden{% endif %}" data-index="ex-{{ loop.index }}">
+              <div class="app-code-snippet__macro"></div>
+              <div class="app-code-snippet__container">
+                <a class="app-link--copy" href="javascript:void(0);" aria-live="assertive">Copy<span class="nhsuk-u-visually-hidden">
+                    {{ exampleTitle }}</span> code</a>
+                <pre><code class="{{ snippet.language }}">
+                  {{- snippet.code | safe -}}
+                </code></pre>
+              </div>
+              {% if snippets | length > 1 %}
+                <a class="app-link--close" href="javascript:void(0);" aria-live="assertive">
+                Close<span class="nhsuk-u-visually-hidden">
+                    {{ exampleTitle }} code</span>
+                </a>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+  </div>
+{% endmacro %}
