@@ -1,10 +1,12 @@
 const fs = require('fs');
-const beautify = require('js-beautify').html;
+const beautifyJs = require('js-beautify'); // also available under "js" export
+const beautifyCss = require('js-beautify').css;
+const beautifyHtml = require('js-beautify').html;
 const nunjucks = require('nunjucks');
 
 // This helper function takes a path of a file and
 // returns the contents as string
-function getFileContents(path) {
+/* function getFileContents(path) {
   let fileContents;
   try {
     fileContents = fs.readFileSync(path);
@@ -16,7 +18,16 @@ function getFileContents(path) {
       throw err;
     }
   }
-  console.log(fileContents);
+  return fileContents.toString();
+} */
+
+function getFileContents(path) {
+  let fileContents = '';
+  if (!fs.existsSync(path)) {
+    fileContents = '';
+  } else {
+    fileContents = fs.readFileSync(path);
+  }
   return fileContents.toString();
 }
 
@@ -51,7 +62,7 @@ exports.getHTMLCode = (path) => {
     }
   }
 
-  return beautify(html.trim(), {
+  return beautifyHtml(html.trim(), {
     end_with_newline: true,
     indent_size: 2,
     // If there are multiple blank lines, reduce down to one blank new line.
@@ -62,10 +73,52 @@ exports.getHTMLCode = (path) => {
   });
 };
 
-exports.getJsCode = (path) => {
+exports.getCSSCode = (path) => {
   const fileContents = getFileContents(path);
 
-  return fileContents;
+  let css;
+  try {
+    css = nunjucks.renderString(fileContents);
+  } catch (err) {
+    if (err) {
+      // eslint-disable-next-line no-console
+      console.log(`Could not get CSS code from ${path}`);
+    }
+  }
+
+  return beautifyCss(css.trim(), {
+    end_with_newline: true,
+    indent_size: 2,
+    // If there are multiple blank lines, reduce down to one blank new line.
+    max_preserve_newlines: 1,
+    // set unformatted to a small group of elements, not all inline (the default)
+    // otherwise tags like label arent indented properly
+    unformatted: ['code', 'pre', 'em', 'strong'],
+  });
+};
+
+exports.getJSCode = (path) => {
+  const fileContents = getFileContents(path);
+
+  let js;
+  try {
+    js = nunjucks.renderString(fileContents);
+  } catch (err) {
+    if (err) {
+      // eslint-disable-next-line no-console
+      console.log(`Could not get JS code from ${path}`);
+    }
+  }
+
+  return beautifyJs(js.trim(), {
+    end_with_newline: true,
+    indent_size: 2,
+    // If there are multiple blank lines, reduce down to one blank new line.
+    max_preserve_newlines: 1,
+    // set unformatted to a small group of elements, not all inline (the default)
+    // otherwise tags like label arent indented properly
+    unformatted: ['code', 'pre', 'em', 'strong'],
+  });
 };
 
 // This helper function takes json data from a file path and returns it as an object

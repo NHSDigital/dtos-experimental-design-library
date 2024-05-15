@@ -14,11 +14,11 @@
   {% endset %}
 
   {% set css %}
-  {{- getHTMLCode(exampleCssPath) | highlight('scss') | safe -}}
+  {{- getCSSCode(exampleCssPath) | highlight('scss') | safe -}}
   {% endset %}
 
   {% set js %}
-  {{- getJsCode(exampleJsPath) | highlight('js') | safe -}}
+  {{- getJSCode(exampleJsPath) | highlight('js') | safe -}}
   {% endset %}
 
   {#
@@ -37,14 +37,19 @@
     name: 'CSS',
     code: css
   } %}
-   {% set jsDefinition = {
-    name: 'JS',
-    code: js
-  } %}
+  {% if js != "" %}
+    {% set jsDefinition = {
+      name: 'JS',
+      code: js
+    } %}
+  {% endif %}
+
   {% if params.htmlOnly %}
     {% set snippets = [htmlDefinition] %}
   {% elif params.cssOnly %}
     {% set snippets = [cssDefinition] %}
+  {% elif params.htmlOnly and params.cssOnly %}
+    {% set snippets = [htmlDefinition, cssDefinition] %}
   {% else %}
     {% set snippets = [htmlDefinition, cssDefinition, jsDefinition] %}
   {% endif %}
