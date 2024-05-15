@@ -1,6 +1,7 @@
 {% macro designExample(params) %}
   {% set examplePath = "app/views/design-library/" + params.group + "/" + params.item + "/" + params.type + "/index.njk" %}
   {% set exampleCssPath = "app/views/design-library/" + params.group + "/" + params.item + "/" + params.type + "/styles.scss" %}
+  {% set exampleJsPath = "app/views/design-library/" + params.group + "/" + params.item + "/" + params.type + "/scripts.js" %}
   {% set standaloneURL = "/design-example/" + params.group + "/" + params.item + "/" + params.type + "?fullpage=" + params.fullpage + "&blankpage=" + params.blankpage %}
 
   {# `showExample` and `showCode` is true, unless explicitly turned off with params #}
@@ -14,6 +15,10 @@
 
   {% set css %}
   {{- getHTMLCode(exampleCssPath) | highlight('scss') | safe -}}
+  {% endset %}
+
+  {% set js %}
+  {{- getJsCode(exampleJsPath) | highlight('js') | safe -}}
   {% endset %}
 
   {#
@@ -32,12 +37,16 @@
     name: 'CSS',
     code: css
   } %}
+   {% set jsDefinition = {
+    name: 'JS',
+    code: js
+  } %}
   {% if params.htmlOnly %}
     {% set snippets = [htmlDefinition] %}
   {% elif params.cssOnly %}
     {% set snippets = [cssDefinition] %}
   {% else %}
-    {% set snippets = [htmlDefinition, cssDefinition] %}
+    {% set snippets = [htmlDefinition, cssDefinition, jsDefinition] %}
   {% endif %}
 
   {% set exampleType = params.type|lower|replace("-", " ") %}

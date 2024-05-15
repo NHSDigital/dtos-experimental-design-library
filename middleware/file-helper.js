@@ -16,6 +16,7 @@ function getFileContents(path) {
       throw err;
     }
   }
+  console.log(fileContents);
   return fileContents.toString();
 }
 
@@ -59,6 +60,12 @@ exports.getHTMLCode = (path) => {
     // otherwise tags like label arent indented properly
     unformatted: ['code', 'pre', 'em', 'strong'],
   });
+};
+
+exports.getJsCode = (path) => {
+  const fileContents = getFileContents(path);
+
+  return fileContents;
 };
 
 // This helper function takes json data from a file path and returns it as an object
