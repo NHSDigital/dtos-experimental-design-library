@@ -7,4 +7,6 @@
 :new: **New features**
 
 - Created the initial layout of the site
-- Added an example component to highlight a potential approach to surfacing design ideas
+- Added an example component, pattern and style to highlight a potential approach to surfacing design ideas
+- Added page templates for components, patterns and stles
+- Updated the readme file with usage instructions

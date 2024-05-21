@@ -2,7 +2,7 @@
 
 A central space for UCD teams in Screening to share their work and ideas. 
 
-This library is <strong>not</strong> a replacement the <a href="https://service-manual.nhs.uk/">NHS Digital service manual</a>. Other NHS teams should continue to use the Service Manual to build their services.
+This library is <strong>not a replacement</strong> for the <a href="https://service-manual.nhs.uk/">NHS Digital service manual</a>. Other NHS teams should continue to use the Service Manual to build their services.
 
 The designs surfaced in this library are experimental, and have been included to help us improve the consistency of our designs across NHS Screening products and services. You should not replicate them in any live services.
 
