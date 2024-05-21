@@ -2,7 +2,7 @@
 
 ## 17 May 2024
 
-:tada: **First release of the NHS screening design library**
+:tada: **First release of the NHS Screening design library**
 
 :new: **New features**
 

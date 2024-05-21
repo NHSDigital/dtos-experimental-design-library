@@ -38,7 +38,7 @@
     {%- block extraMeta %}{% endblock %}
 
     <title>
-      {% if pageTitle %}{{ pageTitle }} - NHS screening design library{% else %}NHS screening design library{% endif %}
+      {% if pageTitle %}{{ pageTitle }} - NHS Screening design library{% else %}NHS Screening design library{% endif %}
     </title>
 
     <link rel="stylesheet" href="/css/main.css">
@@ -69,7 +69,7 @@
     <meta property="og:description" content="{% if pageDescription %}{{pageDescription}}{% else %}A central space for UCD teams in Screening to share their work and ideas. {% endif %}"/>
     <meta property="og:type" content="website"/>
     <meta property="og:locale" content="en_GB"/>
-    <meta property="og:image" content="{% if BASE_URL %}{{ BASE_URL }}{% endif %}{% if pageSection %}/assets/open-graph_{{pageSection | lower | replace(" ", "_") | replace(`'`, ``)}}.png{% else %}/assets/open-graph.png{% endif %}"/>
+    <meta property="og:image" content="/assets/open-graph.png"/>
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@nhsuk">
