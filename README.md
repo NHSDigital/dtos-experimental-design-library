@@ -32,7 +32,7 @@ In your newly created folder, update the files inside `default` as follows:
 
 1. Add your design's HTML code to `index.njk`
 2. Add your design's CSS or SASS to `styles.scss`
-3. If your design requires JavaScript, add your code to `scripts.js`. This is not mandatory if your design does not require JavaScript
+3. If your design requires JavaScript, add your code to `scripts.js`. This is not mandatory, and if your design does not require JavaScript you can delete the `scripts.js` file.
 
 You can repeat these steps if you have more than 1 variation of your design. Either duplicate the `default` folder you just updated, or the `variant` folder inside `template` as many times as you require. Make sure to give each new folder a unique, indentifiable name as we will reference them later when building our index page.
 

@@ -1,0 +1,62 @@
+{% extends "includes/design-example-wrapper-full-layout.njk" %}
+
+{% from 'input/macro.njk' import input %}
+{% from 'button/macro.njk' import button %}
+
+{% block content %}
+  <div class="nhsuk-width-container">
+
+  <main class="nhsuk-main-wrapper" id="maincontent" role="main">
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
+
+        <fieldset class="nhsuk-fieldset">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            Does you service require staff members to have a juggling licence?
+          </legend>
+
+          <div class="nhsuk-hint">
+            You can find out whether your service requires juggling staff by visiting the <a href="#">National Jugglers Database</a>.
+          </div>
+
+          <div class="nhsuk-form-group">
+
+            <div class="nhsuk-radios">
+
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="nhs-number-1" name="nhs-number" type="radio" value="yes">
+                <label class="nhsuk-label nhsuk-radios__label" for="nhs-number-1">
+                  Yes, staff must be able to juggle
+                </label>
+              </div>
+
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="nhs-number-2" name="nhs-number" type="radio" value="no">
+                <label class="nhsuk-label nhsuk-radios__label" for="nhs-number-2">
+                  No, staff do not need to juggle
+                </label>
+              </div>
+
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="nhs-number-2" name="nhs-number" type="radio" value="no">
+                <label class="nhsuk-label nhsuk-radios__label" for="nhs-number-2">
+                  I don't know
+                </label>
+              </div>
+
+            </div>
+          </div>
+
+          <button class="nhsuk-button" data-module="nhsuk-button" type="submit">
+            Continue
+          </button>
+
+        </fieldset>
+
+      </div>
+    </div>
+
+  </main>
+</div>
+{% endblock %}

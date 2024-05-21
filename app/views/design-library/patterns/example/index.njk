@@ -1,7 +1,7 @@
-{% set pageTitle = "Example component" %}
+{% set pageTitle = "Example pattern" %}
 {% set pageSection = "Design library" %}
-{% set subSection = "Components" %}
-{% set pageDescription = "This is an example component, to demonstrate how we surface components we've designed in the design library." %}
+{% set subSection = "Patterns" %}
+{% set pageDescription = "This is an example pattern, to demonstrate how we surface patterns we've designed in the design library." %}
 {% set dateUpdated = "May 2024" %}
 {% set disableSearch = true %}
 
@@ -23,25 +23,15 @@
   <h2>Example and code</h2>
 
   {{ designExample({
-    group: "components",
+    group: "patterns",
     item: "example",
-    type: "default"
+    type: "default",
+    fullpage: true
   }) }}
 
   <!--- VARIATIONS -->
 
-  <h2>Variations</h2>
-  <p>If you have any variations to your design then share them in this section.</p>
-  <p>By variations, we mean things that expand on the core component. Think things like conditional content for a
-      checkbox, or different types of button.</p>
 
-  {{ designExample({
-    group: "components",
-    item: "example",
-    type: "variant"
-  }) }}
-
-  <p>Not every design will need a variation. If that's the case then just remove this section.</p>
 
   <!--- RATIONALE -->
 
