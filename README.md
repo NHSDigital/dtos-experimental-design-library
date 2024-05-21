@@ -1,6 +1,6 @@
-# NHS digital service manual
+# NHS Screening design library
 
-Guidance for designing and building digital services for the NHS. Things you need to make consistent, usable services that put people first.
+A central space for UCD teams in Screening to share their work and ideas. 
 
 ## Running the application locally
 
@@ -10,75 +10,43 @@ Install the long-term support (LTS) version of <a href="https://nodejs.org/en/">
 
 ### Cloning and running the application
 
-Clone the repo: `git clone https://github.com/nhsuk/nhsuk-service-manual.git nhsuk-service-manual` and while in the project directory `cd nhsuk-service-manual`, install the required npm packages with: `npm install`.
+Clone the repo: `git clone https://github.com/nhsuk/screening-library.git screening-library` and while in the project directory `cd screening-library`, install the required npm packages with: `npm install`.
 
 Run the project in development mode `npm run watch` and visit <a href="http://localhost:3000">http://localhost:3000</a>.
 
 Run automated tests locally with `npm run test`.
 
-## Running the application via the browser with Gitpod
+## Adding designs to the library
 
-Before running Gitpod, you must <a href="https://github.com/apps/gitpod-io/installations/new">install the Gitpod.io application on your GitHub account</a>.
+Decide whether the design you're adding is a style, component or pattern and open the relevant folder in `views/design-library`.
 
-Gitpod also requires access to public repositories. Enable this via <a href="https://gitpod.io/integrations">Gitpod integrations</a>. (Click on the 3 dots to edit permissions for your GitHub account. Gitpod may pre-select permissions. You need read/write access to code in the repos.)
+Duplicate the `template` folder and rename it to the name of your style, component or pattern.
 
-Using your own Github credentials you can create, change, commit and push to branches on our Gitpod container via the "ready to code" button below.
+There are 3 documents in `template/default`. These are the HTML, CSS and JS files where you will add the code for your design.
 
-[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/nhsuk/nhsuk-service-manual)
+In your newly created folder, update the files inside `default` as follows:
 
-Read an <a href="https://www.gitpod.io/docs">introduction to Gitpod (on Gitpod's website)</a>.
+    1. Add your design's HTML code to `index.njk`
+    2. Add your design's CSS or SASS to `styles.scss`
+    3. If your design requires JavaScript, add your code to `scripts.js`. This is not mandatory if your design does not require JavaScript
 
-## Release lifecycle
+You can repeat these steps if you have more than 1 variation of your design. Either duplicate the `default` folder you just updated, or the `variant` folder inside `template` as many times as you require. Make sure to give each new folder a unique, indentifiable name as we will reference them later when building our index page.
 
-### Environments
+The basic page structure is defined in `template/index.njk`. Update this file in your new folder with the details of your design, including the rationale, where the design was used, the associated research and the contact details for your team.
 
-#### Review
+Using the `designExample` macro on line 21 of `template/index.njk`, add the designs from your `default` folder by referencing them in the following way:
 
-Code pushed to a branch starting with `review/1-` will deploy on the [review/1 environment](https://nhsuk-service-manual-review-wa-1-dev-uks.azurewebsites.net/).
+    1. On line 22, set `group` to `styles`, `components` or `patterns` depending on the type of design you've added.
+    2. On line 23, set `item` to the name of the design you are adding. 
+    3. On line 24, set `type` to `default`, or the name of the folder you are referencing if you have created a variation of your design.
 
-Code pushed to a branch starting with `review/2-` will deploy on the [review/2 environment](https://nhsuk-service-manual-review-wa-2-dev-uks.azurewebsites.net/).
+When you have finished adding your designs, update the relevant section at lines 7-17 of `views/includes/_side-nav.njk` to include the name and URL of your newly added design.
 
-Code pushed to a branch starting with `review/3-` will deploy on the [review/3 environment](https://nhsuk-service-manual-review-wa-3-dev-uks.azurewebsites.net/).
-
-#### Development
-
-Code pushed to a branch starting with `dev/` will deploy on the [development environment](https://nhsuk-service-manual-wa-dev-uks.azurewebsites.net/).
-
-#### User Testing
-
-Code pushed to a branch starting with `user/` will deploy on the [user testing environment](https://nhsuk-service-manual-usertesting-wa-dev-uks.azurewebsites.net/).
-
-#### Staging
-
-Used for very final checks before changes are pushed to the live website.
-
-Code pushed to the `main` branch will deploy to the [Staging environment](https://nhsuk-service-manual-dev-uks.azurewebsites.net/).
-
-#### Live
-
-The live NHS digital service manual website, accessible to the public.
-
-Git tags created using SEMVER format `v0.0.0` will deploy to the [Live environment](https://service-manual.nhs.uk/). (Note: Live is behind a server side cache which results in changes not appearing immediately.)
-
-### Release to live
-
-1. Visit the [GitHub releases page](https://github.com/nhsuk/nhsuk-service-manual/releases) and [draft a new release](https://github.com/nhsuk/nhsuk-service-manual/releases/new).
-2. Enter the tag version, using the same version as in the [CHANGELOG](https://github.com/nhsuk/nhsuk-service-manual/blob/main/CHANGELOG.md) and [package.json](https://github.com/nhsuk/nhsuk-service-manual/blob/main/package.json#L3) files, prefixed with a `v`. For example `v13.15.1`.
-3. The `main` branch should be preselected. Leave it as it is.
-4. Enter the same tag version in the release title box. For example, `v13.15.1`.
-5. Enter the [CHANGELOG](https://github.com/nhsuk/nhsuk-service-manual/blob/main/CHANGELOG.md) entry for this version's release in the release description box. You can find examples of other release descriptions on the [GitHub releases page](https://github.com/nhsuk/nhsuk-service-manual/releases).
-6. Leave "This is a pre-release" unticked.
-7. Leave "Create a discussion for this release" unticked.
-8. Then click the Publish release button.
-9. After a couple of minutes the Azure Pipeline will complete and the release will start.
-
-### Code Analysis
-
-Code analysis results can be found in [SonarQube](https://sonar.nhswebsite.nhs.uk/dashboard?id=service-manual).
+You may also wish to update the 'What's new' section at line 27 of `views/index.njk`.
 
 ## Get in touch
 
-The NHS digital service manual is maintained by NHS Digital. [Email the service manual team](mailto:service-manual@nhs.net), open a [GitHub issue](https://github.com/nhsuk/nhsuk-service-manual/issues/new) or get in touch on the [NHS digital service manual Slack workspace](https://service-manual.nhs.uk/slack).
+The NHS Screening design library is maintained by the Digital Transformation of Screening team. [Email Dan Johnston](mailto:daniel.johnston1@nhs.net) if you have any questions about it's use.
 
 ## Licence
 
