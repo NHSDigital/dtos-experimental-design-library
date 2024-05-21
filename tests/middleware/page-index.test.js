@@ -45,10 +45,10 @@ beforeEach(() => {
 });
 
 test('test parse page description', () => {
-  const pageData = '<meta name="description" content="Design and build digital services for the NHS. Things you need to make consistent, usable services that put people first.">';
+  const pageData = '<meta name="description" content="A central space for UCD teams in Screening to share their work and ideas. ">';
   const $ = cheerio.load(pageData);
 
-  expect(pageIndex.parseDescription($)).toBe('Design and build digital services for the NHS. Things you need to make consistent, usable services that put people first.');
+  expect(pageIndex.parseDescription($)).toBe('A central space for UCD teams in Screening to share their work and ideas. ');
 });
 
 test('test get index', () => {
