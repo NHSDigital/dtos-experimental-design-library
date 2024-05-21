@@ -26,9 +26,9 @@ There are 3 documents in `template/default`. These are the HTML, CSS and JS file
 
 In your newly created folder, update the files inside `default` as follows:
 
-    1. Add your design's HTML code to `index.njk`
-    2. Add your design's CSS or SASS to `styles.scss`
-    3. If your design requires JavaScript, add your code to `scripts.js`. This is not mandatory if your design does not require JavaScript
+1. Add your design's HTML code to `index.njk`
+2. Add your design's CSS or SASS to `styles.scss`
+3. If your design requires JavaScript, add your code to `scripts.js`. This is not mandatory if your design does not require JavaScript
 
 You can repeat these steps if you have more than 1 variation of your design. Either duplicate the `default` folder you just updated, or the `variant` folder inside `template` as many times as you require. Make sure to give each new folder a unique, indentifiable name as we will reference them later when building our index page.
 
@@ -36,9 +36,9 @@ The basic page structure is defined in `template/index.njk`. Update this file in
 
 Using the `designExample` macro on line 21 of `template/index.njk`, add the designs from your `default` folder by referencing them in the following way:
 
-    1. On line 22, set `group` to `styles`, `components` or `patterns` depending on the type of design you've added.
-    2. On line 23, set `item` to the name of the design you are adding. 
-    3. On line 24, set `type` to `default`, or the name of the folder you are referencing if you have created a variation of your design.
+1. On line 22, set `group` to `styles`, `components` or `patterns` depending on the type of design you've added.
+2. On line 23, set `item` to the name of the design you are adding. 
+3. On line 24, set `type` to `default`, or the name of the folder you are referencing if you have created a variation of your design.
 
 When you have finished adding your designs, update the relevant section at lines 7-17 of `views/includes/_side-nav.njk` to include the name and URL of your newly added design.
 
