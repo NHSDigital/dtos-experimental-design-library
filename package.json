@@ -11,6 +11,9 @@
     "not dead",
     "IE 11"
   ],
+  "engines": {
+    "node": "18.14.0"
+  },
   "scripts": {
     "build": "npm run build:css && npm run build:js && npm run build:assets",
     "build:css": "sass --style=compressed app/styles/:public/css/",
